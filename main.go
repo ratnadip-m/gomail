@@ -35,6 +35,7 @@ func main() {
 			ReceiverName string
 			SenderName   string
 		}{
+
 			ReceiverName: "David Gilmour",
 			SenderName:   "Binod Kafle",
 		}
@@ -57,6 +58,13 @@ func main() {
 			}
 			if status {
 				log.Println("Email sent successfully using OAUTH")
+			}
+			status, err = gomail.EmailWithAttachment(emailTo, "attachment", "content", "", "abc.txt")
+			if err != nil {
+				log.Println(err)
+			}
+			if status {
+				log.Println("Email sent successfully using attachment")
 			}
 
 		}
